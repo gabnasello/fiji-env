@@ -1,3 +1,5 @@
-VERSION="2023-01-26"
+#!/bin/bash
 
-docker build --no-cache -t gnasello/fiji-env:$VERSION .
+VESRION='2023-07-16'
+
+docker build --no-cache -t gnasello/fiji-env:$VESRION .

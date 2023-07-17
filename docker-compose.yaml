@@ -1,16 +1,22 @@
-version: '3'
-
+---
+version: "3"
 services:
-  fiji:
-    image: gnasello/fiji-env
-    build: .
-    ports:
-      - $GUIPORT:8080
-    volumes:
-      - $HOME_RESEARCHER:/data # change the path before ":" with the volume you want to mount
-    hostname: $HOST_NAME
-    container_name: fiji-app
+  slicer-env:
+    image: gnasello/fiji-env:2023-07-16
+    container_name: webtop
+    security_opt:
+      - seccomp:unconfined # for terminal to work
     environment:
-       - GUIPORT=${GUIPORT}
-       - HOME_RESEARCHER=${HOME_RESEARCHER}
-       - HOST_NAME=${HOST_NAME}
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      #- SUBFOLDER=/ #optional
+      - TITLE=Fiji #optional
+    #volumes:
+      #- /home/luna.kuleuven.be/u0128401:/config/researcher_home
+      #- /var/run/docker.sock:/var/run/docker.sock #optional
+    ports:
+      - 3000:3000
+    #devices:
+      #- /dev/dri:/dev/dri #optional
+    shm_size: "1gb" #optional
