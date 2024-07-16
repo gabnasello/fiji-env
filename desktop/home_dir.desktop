@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Home
+Comment=Open Home Directory
+Exec=dolphin /config/
+Icon=folder
+Terminal=false
+StartupNotify=true

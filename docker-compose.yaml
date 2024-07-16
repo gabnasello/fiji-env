@@ -1,9 +1,7 @@
----
-version: "3"
 services:
-  slicer-env:
-    image: gnasello/fiji-env:2023-07-16
-    container_name: webtop
+  fiji-env:
+    image: gnasello/fiji-env:2024-07-16
+    container_name: fiji
     security_opt:
       - seccomp:unconfined # for terminal to work
     environment:

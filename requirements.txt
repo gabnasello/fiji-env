@@ -1,0 +1,4 @@
+jupyterlab
+pyimagej
+scikit-image
+czifile
