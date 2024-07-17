@@ -1,6 +1,6 @@
 services:
   fiji-env:
-    image: gnasello/fiji-env:2024-07-16
+    image: gnasello/fiji-env:2024-07-16.1
     container_name: fiji
     security_opt:
       - seccomp:unconfined # for terminal to work

@@ -1,8 +1,8 @@
-FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-0f29909a
+FROM lscr.io/linuxserver/webtop:amd64-ubuntu-kde-version-b7c41cf2
 
 # Configure environment
 ENV DOCKER_IMAGE_NAME='fiji-env'
-ENV VERSION='2024-07-16' 
+ENV VERSION='2024-07-16.1' 
 
 # ports and volumes
 EXPOSE 3000
@@ -16,7 +16,30 @@ RUN apt-get update && \
     apt-get install -y wget vim git unzip \ 
                        python-is-python3 \
                        python3-pip && \
-    apt install -y python-is-python3 maven nodejs
+    apt install -y python-is-python3 maven
+
+# install python resources + graphical libraries used by qt and vispy
+RUN apt-get update && \
+    apt-get install -qqy  \
+        build-essential \
+        mesa-utils \
+        libgl1-mesa-glx \
+        libglib2.0-0 \
+        libfontconfig1 \
+        libxrender1 \
+        libdbus-1-3 \
+        libxkbcommon-x11-0 \
+        libxi6 \
+        libxcb-icccm4 \
+        libxcb-image0 \
+        libxcb-keysyms1 \
+        libxcb-randr0 \
+        libxcb-render-util0 \
+        libxcb-xinerama0 \
+        libxcb-xinput0 \
+        libxcb-xfixes0 \
+        libxcb-shape0 \
+        && apt-get clean
     
 # Install Fiji.
 
@@ -55,3 +78,7 @@ RUN chmod 777 /config/Desktop/jupyter.desktop
 
 COPY /desktop/home_dir.desktop /config/Desktop/
 RUN chmod 777 /config/Desktop/home_dir.desktop
+
+# Copy examples directory
+COPY --chown=abc:abc examples_fiji/ /config/examples_fiji
+RUN chmod 777 -R /config/examples_fiji

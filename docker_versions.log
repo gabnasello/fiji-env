@@ -1,4 +1,11 @@
 -------------------------------
+v. 2024-07-16.1
+
+Update base linuxserver/webtop image to amd64-ubuntu-kde-version-b7c41cf2 
+
+Add examples_fiji directory
+
+-------------------------------
 v. 2024-07-16
 
 Installing pyimagej and jupyter lab 
